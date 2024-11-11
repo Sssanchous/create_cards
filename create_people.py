@@ -73,13 +73,13 @@ def create_cards():
 
 
 def main():
-    os.makedirs('create_people/output/svg', mode=0o777, exist_ok=True)
+    os.makedirs('create_cards/output/svg', mode=0o777, exist_ok=True)
     sort_text(skills)
     for i in range(10):
         context = create_cards()
         file_operations.render_template(
-            "create_people/src/charsheet.svg",
-            f"create_people/output/svg/result-{i+1}.svg",
+            "create_cards/src/charsheet.svg",
+            f"create_cards/output/svg/result-{i+1}.svg",
             context)
 
 
