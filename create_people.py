@@ -7,15 +7,15 @@ import os
 from faker import Faker
 
 
-fake = Faker("ru_RU")
+FAKE = Faker("ru_RU")
 
-skills = [
+SKILLS = [
     "Стремительный прыжок", "Электрический выстрел", "Ледяной удар",
     "Стремительный удар", "Кислотный взгляд", "Тайный побег",
     "Ледяной выстрел", "Огненный заряд"
 ]
 
-letters_mapping = {
+LETTERS_MAPPING = {
     'а': 'а͠', 'б': 'б̋', 'в': 'в͒͠',
     'г': 'г͒͠', 'д': 'д̋', 'е': 'е͠',
     'ё': 'ё͒͠', 'ж': 'ж͒', 'з': 'з̋̋͠',
@@ -42,20 +42,20 @@ letters_mapping = {
 }
 
 
-def sort_text(skills):
-    for i in range(len(skills)):
-        for y in skills[i]:
-            if y in letters_mapping:
-                skills[i] = skills[i].replace(y, letters_mapping[y])
+def sort_text():
+    for i in range(len(SKILLS)):
+        for y in SKILLS[i]:
+            if y in LETTERS_MAPPING:
+                SKILLS[i] = SKILLS[i].replace(y, LETTERS_MAPPING[y])
 
 
 def create_cards():
-    unique_skills = random.sample(skills, 3)
+    unique_skills = random.sample(SKILLS, 3)
     context = {
-        "first_name": fake.first_name_male(),
-        "last_name": fake.last_name_male(),
-        "job": fake.job(),
-        "town": fake.city(),
+        "first_name": FAKE.first_name_male(),
+        "last_name": FAKE.last_name_male(),
+        "job": FAKE.job(),
+        "town": FAKE.city(),
         "strength": random.randint(3, 18),
         "agility": random.randint(3, 18),
         "endurance": random.randint(3, 18),
@@ -70,7 +70,7 @@ def create_cards():
 
 def main():
     os.makedirs('output/svg', mode=0o777, exist_ok=True)
-    sort_text(skills)
+    sort_text()
     for i in range(10):
         context = create_cards()
         file_operations.render_template(
