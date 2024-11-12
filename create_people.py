@@ -1,13 +1,10 @@
 import file_operations
 
-
-from faker import Faker
-
-
 import random
 
-
 import os
+
+from faker import Faker
 
 
 fake = Faker("ru_RU")
@@ -50,7 +47,6 @@ def sort_text(skills):
         for y in skills[i]:
             if y in letters_mapping:
                 skills[i] = skills[i].replace(y, letters_mapping[y])
-    return skills
 
 
 def create_cards():
