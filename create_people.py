@@ -1,9 +1,6 @@
 import file_operations
-
 import random
-
 import os
-
 from faker import Faker
 
 
